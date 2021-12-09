@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Games{% endblock %}
+
+{% block body %}
+    <h1>Games</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ game.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ game.Name }}</td>
+            </tr>
+            <tr>
+                <th>PegiRating</th>
+                <td>{{ game.PegiRating }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ game.Price }}</td>
+            </tr>
+            <tr>
+                <th>Multiplayer</th>
+                <td>{{ game.Multiplayer ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>LastUpdateVersion</th>
+                <td>{{ game.LastUpdateVersion }}</td>
+            </tr>
+            <tr>
+                <th>ESport</th>
+                <td>{{ game.ESport ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('games_index') }}">back to list</a>
+
+    <a href="{{ path('games_edit', {'id': game.id}) }}">edit</a>
+
+    {{ include('games/_delete_form.html.twig') }}
+{% endblock %}
