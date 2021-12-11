@@ -3,21 +3,78 @@
 namespace App\Form;
 
 use App\Entity\Games;
+use App\Entity\Console;
+use App\Entity\Developer;
+use App\Entity\Genre;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+
 
 class GamesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Name')
-            ->add('PegiRating')
-            ->add('Price')
-            ->add('Multiplayer')
-            ->add('LastUpdateVersion')
-            ->add('ESport')
+            ->add('Name', TextType::class, [
+                'label' => 'Nom',
+                'required' => true
+            ])
+            ->add('PegiRating', IntegerType::class, [
+                'label' => 'Pegi',
+                'required' => true
+            ])
+            // ->add('Price', MoneyType::class, [
+            //     'label' => 'Prix',
+            //     'divisor' => 100,
+            //     'required' => true
+            // ])
+            ->add('Multiplayer', CheckboxType::class, [
+                'label' => 'Multijoueur',
+                'required' => false
+            ])
+            ->add('LastUpdateVersion', NumberType::class, [
+                'label' => 'Dernière version en date',
+                'required' => false
+            ])
+            ->add('ESport', CheckboxType::class, [
+                'label' => 'E-sport',
+                'required' => false
+            ])
+            ->add('Console', EntityType::class, [
+                'label' => 'Quel(les) consoles',
+                'class' => Console::class,
+                'choice_label' => 'Name',
+                'multiple' => true,
+                'required' => true,
+                'mapped' => false
+            ])
+            -> add('Developer', EntityType::class, [
+                'label' => 'Quel développeur',
+                'class' => Developer::class,
+                'choice_label' => 'Name',
+                'multiple' => false,
+                'required' => true,
+                'mapped' => false
+
+            ])
+            -> add('Genre', EntityType::class, [
+                'label' => 'Quel genre',
+                'class' => Genre::class,
+                'choice_label' => 'Name',
+                'multiple' => true,
+                'required' => true,
+                'mapped' => false
+
+            ])
         ;
     }
 

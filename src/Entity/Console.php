@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ConsoleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,22 @@ class Console
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $Retrocompability;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Games::class, inversedBy="console_id")
+     */
+    private $game_id;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Developer::class, inversedBy="console_id")
+     */
+    private $developer_id;
+
+    public function __construct()
+    {
+        $this->game_id = new ArrayCollection();
+        $this->developer_id = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +104,54 @@ class Console
     public function setRetrocompability(?bool $Retrocompability): self
     {
         $this->Retrocompability = $Retrocompability;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|games[]
+     */
+    public function getGameId(): Collection
+    {
+        return $this->game_id;
+    }
+
+    public function addGameId(games $gameId): self
+    {
+        if (!$this->game_id->contains($gameId)) {
+            $this->game_id[] = $gameId;
+        }
+
+        return $this;
+    }
+
+    public function removeGameId(games $gameId): self
+    {
+        $this->game_id->removeElement($gameId);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|developer[]
+     */
+    public function getDeveloperId(): Collection
+    {
+        return $this->developer_id;
+    }
+
+    public function addDeveloperId(developer $developerId): self
+    {
+        if (!$this->developer_id->contains($developerId)) {
+            $this->developer_id[] = $developerId;
+        }
+
+        return $this;
+    }
+
+    public function removeDeveloperId(developer $developerId): self
+    {
+        $this->developer_id->removeElement($developerId);
 
         return $this;
     }
