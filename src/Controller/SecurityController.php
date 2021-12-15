@@ -27,7 +27,7 @@ class SecurityController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('book_index');
+            return $this->redirectToRoute('/');
         }
 
         return $this->render('security/register.html.twig', [
