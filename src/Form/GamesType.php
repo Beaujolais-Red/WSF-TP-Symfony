@@ -49,7 +49,7 @@ class GamesType extends AbstractType
                 'required' => false
             ])
             ->add('Console', EntityType::class, [
-                'label' => 'Quel(les) consoles',
+                'label' => 'Quel(les) console(s)',
                 'class' => Console::class,
                 'choice_label' => 'Name',
                 'multiple' => true,

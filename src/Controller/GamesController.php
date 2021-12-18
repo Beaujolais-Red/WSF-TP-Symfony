@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controller;
-
 use App\Entity\Games;
 use App\Form\GamesType;
 use App\Repository\GamesRepository;

@@ -16,6 +16,9 @@
                 <th>Multijoueur</th>
                 <th>Dernière version en date</th>
                 <th>ESport</th>
+                <th>Console</th>
+                <th>Developpeur</th>
+                <th>Genre</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -28,6 +31,9 @@
                 <td>{{ game.Multiplayer }}</td>
                 <td>{{ game.LastUpdateVersion }}</td>
                 <td>{{ game.ESport }}</td>
+                <td>{{ game.Console }}</td>
+                <td>{{ game.Developer }}</td>
+                <td>{{ game.Genre }}</td>
                 <td>
                     <a href="{{ path('games_show', {'id': game.id}) }}"><span class="new badge pink darken-4" data-badge-caption="Voir"></span></a>
                     <a href="{{ path('games_edit', {'id': game.id}) }}"><span class="new badge pink darken-4" data-badge-caption="Modifier"></span></a>
