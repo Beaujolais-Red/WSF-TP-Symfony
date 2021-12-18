@@ -35,7 +35,7 @@ class Games
     private $Price;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $Multiplayer;
 
@@ -45,7 +45,7 @@ class Games
     private $LastUpdateVersion;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $ESport;
 
@@ -112,12 +112,12 @@ class Games
         return $this;
     }
 
-    public function getMultiplayer(): ?bool
+    public function getMultiplayer(): ?string
     {
         return $this->Multiplayer;
     }
 
-    public function setMultiplayer(?bool $Multiplayer): self
+    public function setMultiplayer(?string $Multiplayer): self
     {
         $this->Multiplayer = $Multiplayer;
 
@@ -136,12 +136,12 @@ class Games
         return $this;
     }
 
-    public function getESport(): ?bool
+    public function getESport(): ?string
     {
         return $this->ESport;
     }
 
-    public function setESport(?bool $ESport): self
+    public function setESport(?string $ESport): self
     {
         $this->ESport = $ESport;
 

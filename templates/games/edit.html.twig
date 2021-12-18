@@ -3,11 +3,12 @@
 {% block title %}Edit Games{% endblock %}
 
 {% block body %}
-    <h1>Edit Games</h1>
+    <img class="responsive-img" src="https://cswarzone.com/wp-content/uploads/2020/05/CSGO-Banner.png">
+    <h1>Modifier un jeu</h1>
 
     {{ include('games/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('games_index') }}">back to list</a>
+    <a href="{{ path('games_index') }}"><span class="new badge pink darken-4" data-badge-caption="Retour à la liste"></span></a>
 
     {{ include('games/_delete_form.html.twig') }}
 {% endblock %}

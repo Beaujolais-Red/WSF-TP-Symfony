@@ -3,11 +3,12 @@
 {% block title %}Edit Developer{% endblock %}
 
 {% block body %}
+    <img class="responsive-img" src="https://sites.google.com/site/disasterbot0101/_/rsrc/1502124923061/game-design/class-introduction/Games-Banner-1140x400.png">
     <h1>Edit Developer</h1>
 
-    {{ include('developer/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('developer/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a href="{{ path('developer_index') }}">back to list</a>
+    <a href="{{ path('developer_index') }}"><span class="new badge pink darken-4" data-badge-caption="Retour à la liste"></span></a>
 
     {{ include('developer/_delete_form.html.twig') }}
 {% endblock %}

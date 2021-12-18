@@ -3,43 +3,45 @@
 {% block title %}Games index{% endblock %}
 
 {% block body %}
-    <h1>Games index</h1>
+
+    <img class="responsive-img" src="https://cswarzone.com/wp-content/uploads/2020/05/CSGO-Banner.png">
+    <h1>Index des jeux</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>PegiRating</th>
-                <th>Price</th>
-                <th>Multiplayer</th>
-                <th>LastUpdateVersion</th>
+                <th>Nom</th>
+                <th>Classement PEGI</th>
+                <th>Prix</th>
+                <th>Multijoueur</th>
+                <th>Dernière version en date</th>
                 <th>ESport</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for game in games %}
             <tr>
-                <td>{{ game.id }}</td>
                 <td>{{ game.Name }}</td>
                 <td>{{ game.PegiRating }}</td>
                 <td>{{ game.Price }}</td>
-                <td>{{ game.Multiplayer ? 'Yes' : 'No' }}</td>
+                <td>{{ game.Multiplayer }}</td>
                 <td>{{ game.LastUpdateVersion }}</td>
-                <td>{{ game.ESport ? 'Yes' : 'No' }}</td>
+                <td>{{ game.ESport }}</td>
                 <td>
-                    <a href="{{ path('games_show', {'id': game.id}) }}">show</a>
-                    <a href="{{ path('games_edit', {'id': game.id}) }}">edit</a>
+                    <a href="{{ path('games_show', {'id': game.id}) }}"><span class="new badge pink darken-4" data-badge-caption="Voir"></span></a>
+                    <a href="{{ path('games_edit', {'id': game.id}) }}"><span class="new badge pink darken-4" data-badge-caption="Modifier"></span></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">Pas d'entrées dans cette catégorie</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('games_new') }}">Create new</a>
+    <a href="{{ path('games_new') }}">
+        <span class="new badge pink darken-4" data-badge-caption="Ajouter une nouvelle entrée"></span>
+    </a>
 {% endblock %}

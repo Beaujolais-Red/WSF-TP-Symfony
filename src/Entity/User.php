@@ -36,7 +36,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      * @Assert\Length(
      *      min = 6,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      minMessage = "Your password must be at least {{ limit }} characters long",
      * )
      */
     private $password;

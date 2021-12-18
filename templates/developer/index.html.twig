@@ -3,35 +3,36 @@
 {% block title %}Developer index{% endblock %}
 
 {% block body %}
-    <h1>Developer index</h1>
+    <img class="responsive-img" src="https://sites.google.com/site/disasterbot0101/_/rsrc/1502124923061/game-design/class-introduction/Games-Banner-1140x400.png">
+    <h1>Index des développeurs</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Country</th>
-                <th>actions</th>
+                <th>Nom</th>
+                <th>Pays d'origine</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for developer in developers %}
             <tr>
-                <td>{{ developer.id }}</td>
                 <td>{{ developer.Name }}</td>
                 <td>{{ developer.Country }}</td>
                 <td>
-                    <a href="{{ path('developer_show', {'id': developer.id}) }}">show</a>
-                    <a href="{{ path('developer_edit', {'id': developer.id}) }}">edit</a>
+                    <a href="{{ path('developer_show', {'id': developer.id}) }}"><span class="new badge pink darken-4" data-badge-caption="Voir"></span></a>
+                    <a href="{{ path('developer_edit', {'id': developer.id}) }}"><span class="new badge pink darken-4" data-badge-caption="Modifier"></span></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Pas d'entrées dans cette catégorie</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('developer_new') }}">Create new</a>
+    <a href="{{ path('developer_new') }}">
+        <span class="new badge pink darken-4" data-badge-caption="Ajouter une nouvelle entrée"></span>
+    </a>
 {% endblock %}

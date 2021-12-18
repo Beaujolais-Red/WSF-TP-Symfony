@@ -32,12 +32,11 @@ class GamesType extends AbstractType
                 'label' => 'Pegi',
                 'required' => true
             ])
-            // ->add('Price', MoneyType::class, [
-            //     'label' => 'Prix',
-            //     'divisor' => 100,
-            //     'required' => true
-            // ])
-            ->add('Multiplayer', CheckboxType::class, [
+            ->add('Price', MoneyType::class, [
+                'label' => 'Prix',
+                'required' => true
+            ])
+            ->add('Multiplayer', TextType::class, [
                 'label' => 'Multijoueur',
                 'required' => false
             ])
@@ -45,7 +44,7 @@ class GamesType extends AbstractType
                 'label' => 'Dernière version en date',
                 'required' => false
             ])
-            ->add('ESport', CheckboxType::class, [
+            ->add('ESport', TextType::class, [
                 'label' => 'E-sport',
                 'required' => false
             ])
@@ -73,7 +72,6 @@ class GamesType extends AbstractType
                 'multiple' => true,
                 'required' => true,
                 'mapped' => false
-
             ])
         ;
     }

@@ -9,11 +9,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+#[IsGranted("ROLE_USER")]
 #[Route('/developer')]
 class DeveloperController extends AbstractController
 {
-    #[Route('/', name: 'developer_index', methods: ['GET'])]
+    #[Route('/', name: 'developer_index', methods: ['GET']),
+    IsGranted("ROLE_USER")]
     public function index(DeveloperRepository $developerRepository): Response
     {
         return $this->render('developer/index.html.twig', [
@@ -21,7 +24,8 @@ class DeveloperController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'developer_new', methods: ['GET','POST'])]
+    #[Route('/new', name: 'developer_new', methods: ['GET','POST']),
+    IsGranted("ROLE_USER")]
     public function new(Request $request): Response
     {
         $developer = new Developer();
@@ -42,7 +46,8 @@ class DeveloperController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'developer_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'developer_show', methods: ['GET']),
+    IsGranted("ROLE_USER")]
     public function show(Developer $developer): Response
     {
         return $this->render('developer/show.html.twig', [
@@ -50,7 +55,8 @@ class DeveloperController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'developer_edit', methods: ['GET','POST'])]
+    #[Route('/{id}/edit', name: 'developer_edit', methods: ['GET','POST']),
+    IsGranted("ROLE_USER")]
     public function edit(Request $request, Developer $developer): Response
     {
         $form = $this->createForm(DeveloperType::class, $developer);
@@ -68,7 +74,8 @@ class DeveloperController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'developer_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'developer_delete', methods: ['POST']),
+    IsGranted("ROLE_USER")]
     public function delete(Request $request, Developer $developer): Response
     {
         if ($this->isCsrfTokenValid('delete'.$developer->getId(), $request->request->get('_token'))) {

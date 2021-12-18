@@ -3,11 +3,13 @@
 {% block title %}Edit Genre{% endblock %}
 
 {% block body %}
-    <h1>Edit Genre</h1>
 
-    {{ include('genre/_form.html.twig', {'button_label': 'Update'}) }}
+    <img class="responsive-img" src="https://www.hp.com/us-en/shop/app/assets/images/uploads/prod/video-game-genres1597871118726439.jpg">
+    <h1>Modifier le genre</h1>
 
-    <a href="{{ path('genre_index') }}">back to list</a>
+    {{ include('genre/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('genre_index') }}"><span class="new badge pink darken-4" data-badge-caption="Retour à la liste"></span></a>
 
     {{ include('genre/_delete_form.html.twig') }}
 {% endblock %}

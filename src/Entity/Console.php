@@ -25,7 +25,7 @@ class Console
     private $Name;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=255)
      */
     private $FreeOnline;
 
@@ -35,7 +35,7 @@ class Console
     private $Price;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $Retrocompability;
 
@@ -72,12 +72,12 @@ class Console
         return $this;
     }
 
-    public function getFreeOnline(): ?bool
+    public function getFreeOnline(): ?string
     {
         return $this->FreeOnline;
     }
 
-    public function setFreeOnline(bool $FreeOnline): self
+    public function setFreeOnline(string $FreeOnline): self
     {
         $this->FreeOnline = $FreeOnline;
 
@@ -96,12 +96,12 @@ class Console
         return $this;
     }
 
-    public function getRetrocompability(): ?bool
+    public function getRetrocompability(): ?string
     {
         return $this->Retrocompability;
     }
 
-    public function setRetrocompability(?bool $Retrocompability): self
+    public function setRetrocompability(?string $Retrocompability): self
     {
         $this->Retrocompability = $Retrocompability;
 

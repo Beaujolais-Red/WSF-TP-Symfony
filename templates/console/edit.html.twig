@@ -3,11 +3,12 @@
 {% block title %}Edit Console{% endblock %}
 
 {% block body %}
+    <img class="responsive-img" src="https://www.corexzone.com/app/uploads/2018/06/web-banner-xbx.jpg">
     <h1>Edit Console</h1>
 
-    {{ include('console/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('console/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a href="{{ path('console_index') }}">back to list</a>
+    <a href="{{ path('console_index') }}"><span class="new badge pink darken-4" data-badge-caption="Retour à la liste"></span></a>
 
     {{ include('console/_delete_form.html.twig') }}
 {% endblock %}

@@ -3,9 +3,10 @@
 {% block title %}New Console{% endblock %}
 
 {% block body %}
-    <h1>Create new Console</h1>
+    <img class="responsive-img" src="https://www.corexzone.com/app/uploads/2018/06/web-banner-xbx.jpg">
+    <h1>Rajouter une nouvelle console</h1>
 
     {{ include('console/_form.html.twig') }}
 
-    <a href="{{ path('console_index') }}">back to list</a>
+    <a href="{{ path('console_index') }}"><span class="new badge pink darken-4" data-badge-caption="Retour à la liste"></span></a>
 {% endblock %}

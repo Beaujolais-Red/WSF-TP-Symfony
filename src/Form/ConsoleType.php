@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Console;
+use App\Entity\Developer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,16 +23,15 @@ class ConsoleType extends AbstractType
                 'label' => 'Nom',
                 'required' => true
             ])
-            ->add('FreeOnline', CheckboxType::class, [
+            ->add('FreeOnline', TextType::class, [
                 'label' => 'Online gratuit',
                 'required' => true
             ])
             ->add('Price', MoneyType::class, [
-                'divisor' => 100,
                 'label' => 'Prix de la console',
                 'required' => true
             ])
-            ->add('Retrocompability', CheckboxType::class, [
+            ->add('Retrocompability', TextType::class, [
                 'label' => 'Rétrocompatibilité',
                 'required' => false
             ])
@@ -40,7 +40,8 @@ class ConsoleType extends AbstractType
                 'class' => Developer::class,
                 'choice_label' => 'Name',
                 'multiple' => true,
-                'required' => false
+                'required' => false,
+                'mapped' => false
             ])
         ;
     }

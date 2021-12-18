@@ -3,39 +3,39 @@
 {% block title %}Console index{% endblock %}
 
 {% block body %}
-    <h1>Console index</h1>
+    <img class="responsive-img" src="https://www.corexzone.com/app/uploads/2018/06/web-banner-xbx.jpg">
+    <h1>Index des consoles</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>FreeOnline</th>
-                <th>Price</th>
-                <th>Retrocompability</th>
-                <th>actions</th>
+                <th>Nom</th>
+                <th>Online gratuit et spécificités</th>
+                <th>Prix</th>
+                <th>Retrocompabilité</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for console in consoles %}
             <tr>
-                <td>{{ console.id }}</td>
                 <td>{{ console.Name }}</td>
-                <td>{{ console.FreeOnline ? 'Yes' : 'No' }}</td>
+                <td>{{ console.FreeOnline }}</td>
                 <td>{{ console.Price }}</td>
-                <td>{{ console.Retrocompability ? 'Yes' : 'No' }}</td>
+                <td>{{ console.Retrocompability }}</td>
                 <td>
-                    <a href="{{ path('console_show', {'id': console.id}) }}">show</a>
-                    <a href="{{ path('console_edit', {'id': console.id}) }}">edit</a>
+                    <a href="{{ path('console_show', {'id': console.id}) }}"><span class="new badge pink darken-4" data-badge-caption="Voir"></span></a>
+                    <a href="{{ path('console_edit', {'id': console.id}) }}"><span class="new badge pink darken-4" data-badge-caption="Modifier"></span></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Pas d'entrées dans cette catégorie</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('console_new') }}">Create new</a>
+    <a href="{{ path('console_new') }}">
+        <span class="new badge pink darken-4" data-badge-caption="Ajouter une nouvelle entrée"></span>
+    </a>
 {% endblock %}

@@ -9,11 +9,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+#[IsGranted("ROLE_USER")]
 #[Route('/genre')]
 class GenreController extends AbstractController
 {
-    #[Route('/', name: 'genre_index', methods: ['GET'])]
+    #[Route('/', name: 'genre_index', methods: ['GET']),
+    IsGranted("ROLE_USER")]
     public function index(GenreRepository $genreRepository): Response
     {
         return $this->render('genre/index.html.twig', [
@@ -21,7 +24,8 @@ class GenreController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'genre_new', methods: ['GET','POST'])]
+    #[Route('/new', name: 'genre_new', methods: ['GET','POST']),
+    IsGranted("ROLE_USER")]
     public function new(Request $request): Response
     {
         $genre = new Genre();
@@ -42,7 +46,8 @@ class GenreController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'genre_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'genre_show', methods: ['GET']),
+    IsGranted("ROLE_USER")]
     public function show(Genre $genre): Response
     {
         return $this->render('genre/show.html.twig', [
@@ -50,7 +55,8 @@ class GenreController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'genre_edit', methods: ['GET','POST'])]
+    #[Route('/{id}/edit', name: 'genre_edit', methods: ['GET','POST']),
+    IsGranted("ROLE_USER")]
     public function edit(Request $request, Genre $genre): Response
     {
         $form = $this->createForm(GenreType::class, $genre);
@@ -68,7 +74,8 @@ class GenreController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'genre_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'genre_delete', methods: ['POST']),
+    IsGranted("ROLE_USER")]
     public function delete(Request $request, Genre $genre): Response
     {
         if ($this->isCsrfTokenValid('delete'.$genre->getId(), $request->request->get('_token'))) {

@@ -25,24 +25,26 @@
 
   {# header #}
 
-  <nav class="red">
+  <nav class="grey darken-1">
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Logo</a>
+      <a href="#" class="brand-logo">
+      <img src="https://zupimages.net/up/21/50/rz3y.png" />
+      </a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="{{ path('games_index') }}">Jeux</a></li>
-        <li><a href="{{ path('console_index') }}">Plateformes</a></li>
+        <li><a href="{{ path('console_index') }}">Consoles</a></li>
         <li><a href="{{ path('developer_index') }}">Développeurs </a></li>
         <li><a href="{{ path('genre_index') }}">Genre </a></li>
-        <li><a href="{{ path('app_register') }}">S'enregistrer </a></li>
-        <li><a href="{{ path('app_login') }}">S'identifier </a></li>
+        <li><a href="{{ path('app_register') }}"><span class="new badge pink darken-4" data-badge-caption="S'enregistrer"></span></a></li>
+        <li><a href="{{ path('app_login') }}"><span class="new badge pink darken-4" data-badge-caption="S'identifier"></span></a></li>
       </ul>
     </div>
   </nav>
 
   <ul class="sidenav" id="mobile-demo">
     <li><a href="{{ path('games_index') }}">Jeux</a></li>
-    <li><a href="{{ path('console_index') }}">Plateformes</a></li>
+    <li><a href="{{ path('console_index') }}">Consoles</a></li>
     <li><a href="{{ path('developer_index') }}">Développeurs </a></li>
     <li><a href="{{ path('genre_index') }}">Genre </a></li>
   </ul>
@@ -52,47 +54,18 @@
         {% block body %}{% endblock %}
     </div>
 
-    <script>
-        {% for type, messages in app.flashes() %}
-            {% for message in messages %}
-                M.toast({html: '{{ message }}', classes: '{{ type }}'});
-            {% endfor %}
-        {% endfor %}
+    // <script>
+    //     {% for type, messages in app.flashes() %}
+    //         {% for message in messages %}
+    //             M.toast({html: '{{ message }}', classes: '{{ type }}'});
+    //         {% endfor %}
+    //     {% endfor %}
 
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(elems);
-        });
-    </script>
-
-  {# footer #}
-  
-  
-  <footer class="page-footer" >
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2014 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div>
-          </div>
-        </footer>
+    //     document.addEventListener('DOMContentLoaded', function() {
+    //         var elems = document.querySelectorAll('select');
+    //         var instances = M.FormSelect.init(elems);
+    //     });
+    // </script>
             
 
 </body>

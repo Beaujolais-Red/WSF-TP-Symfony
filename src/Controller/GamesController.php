@@ -9,11 +9,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+#[IsGranted("ROLE_USER")]
 #[Route('/games')]
 class GamesController extends AbstractController
 {
-    #[Route('/', name: 'games_index', methods: ['GET'])]
+    #[Route('/', name: 'games_index', methods: ['GET']),
+    IsGranted("ROLE_USER")]
     public function index(GamesRepository $gamesRepository): Response
     {
         return $this->render('games/index.html.twig', [
@@ -21,7 +24,8 @@ class GamesController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'games_new', methods: ['GET','POST'])]
+    #[Route('/new', name: 'games_new', methods: ['GET','POST']),
+    IsGranted("ROLE_USER")]
     public function new(Request $request): Response
     {
         $game = new Games();
@@ -42,7 +46,8 @@ class GamesController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'games_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'games_show', methods: ['GET']),
+    IsGranted("ROLE_USER")]
     public function show(Games $game): Response
     {
         return $this->render('games/show.html.twig', [
@@ -50,7 +55,8 @@ class GamesController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'games_edit', methods: ['GET','POST'])]
+    #[Route('/{id}/edit', name: 'games_edit', methods: ['GET','POST']),
+    IsGranted("ROLE_USER")]
     public function edit(Request $request, Games $game): Response
     {
         $form = $this->createForm(GamesType::class, $game);
@@ -68,7 +74,8 @@ class GamesController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'games_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'games_delete', methods: ['POST']),
+    IsGranted("ROLE_USER")]
     public function delete(Request $request, Games $game): Response
     {
         if ($this->isCsrfTokenValid('delete'.$game->getId(), $request->request->get('_token'))) {
